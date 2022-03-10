@@ -29,8 +29,9 @@ function mergeSort(arr) {
 // Space: average - O(n) | worst - O(n)
 // quickSort tends to perform faster on average than mergeSort
 function quickSort(arr, left, right) {
-  if (left < right) 
-  let pivot = partition(arr, left, right)
+  if (left < right) {
+    let pivot = partition(arr, left, right)
+  }
 
   if (left < pivot - 1) quickSort(arr,left, pivot - 1)
   if (right > pivot) quickSort(arr, pivot, right)
@@ -142,6 +143,6 @@ Spotify Discover Weekly:
     
 challenge for AI: you need data, and huge computing resource
 
-
+*/
 
 
