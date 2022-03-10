@@ -29,7 +29,7 @@ The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 
 
 */
 
-const maxSatisfied = function(customers, grumpy, minutes) {
+const maxSatisfied = function(customers: number[], grumpy: number[], minutes: number) {
   // const grumpy = [0, 1, 0, 1, 0, 1, 0, 1] = 
   // const custom = [1, 0, 1, 2, 1, 1, 7, 5] = 18
   // const mHappy = [1, 0, 1, 0, 1, 0, 7, 0] = 10  
@@ -39,8 +39,8 @@ const maxSatisfied = function(customers, grumpy, minutes) {
 
 };
 
-const grumpy = [0, 1, 0, 1, 0, 1, 0, 1];
-const custom = [1, 0, 1, 2, 1, 1, 7, 5]; // customers
-const minutes = 3;
+const grumpy: number[] = [0, 1, 0, 1, 0, 1, 0, 1];
+const custom: number[] = [1, 0, 1, 2, 1, 1, 7, 5]; // customers
+const minutes: number = 3;
 
 console.log(maxSatisfied(custom, grumpy, minutes))
