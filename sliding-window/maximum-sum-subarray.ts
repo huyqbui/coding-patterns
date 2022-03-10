@@ -19,6 +19,10 @@ Explanation: Subarray with maximum sum is [3, 4].
 const maxSumSubarray = (k: number, arr: number[]) => {
   // inputs: array of numbers, 'k' number
   // output: number = maxSum of any contiguous subarray of k size
+
+  // edge cases: if k 0 or less, or array has no items, return;
+  if (k <= 0 || !arr.length) return;
+
   // store ref currSum, maxSum, start, end
   let currSum: number = 0, maxSum: number = -Infinity, start: number = 0;
   // iterate through array, adding each number to currSum
