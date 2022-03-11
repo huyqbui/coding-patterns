@@ -27,6 +27,7 @@ const minimumDeletions = (s: string): number => {
 
   // iterate through string:
   for (let i = 0; i < s.length; i++) {
+    const char = s[i].toLowerCase()
     // if char is 'a', then take the min between numOfB & minDeletions + 1
     if (char === 'a') minDeletions = Math.min(numOfB, minDeletions + 1)
     // if char is 'b', increment numOfB
