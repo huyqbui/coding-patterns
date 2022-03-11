@@ -14,6 +14,8 @@ Input: Array=[0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1], k=3
 Output: 9
 Explanation: Replace the '0' at index 6, 9, and 10 to have the longest contiguous subarray of 1s having length 9.
 */
+
+// Time: O(n) where n = arr length | Space: O(1) 
 const longestSubstringLength2 = function(arr: number[], k: number) {
   // store ref to start, maxLen, numOnesCount, windowSize
   let start = 0,
