@@ -24,15 +24,14 @@ Explanation: The only solution is to delete the first two characters.
 const minimumDeletions = (s: string): number => {
   // store ref to num of b's, min num of deletions
   let numOfB: number = 0, minDeletions: number = 0;
+
   // iterate through string:
   for (let i = 0; i < s.length; i++) {
-    let char = s[i].toLowerCase()
     // if char is 'a', then take the min between numOfB & minDeletions + 1
     if (char === 'a') minDeletions = Math.min(numOfB, minDeletions + 1)
     // if char is 'b', increment numOfB
     if (char === 'b') numOfB++;
   }
-  
   return minDeletions;
 }
 
