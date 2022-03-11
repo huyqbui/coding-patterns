@@ -59,5 +59,5 @@ const fruitsIntoBaskets = function(fruits: string[]) {
 };
 
 console.log(fruitsIntoBaskets(['A', 'B', 'C', 'A', 'C'])) // -> 3
-console.log(fruitsIntoBaskets(['B', 'O', 'C', 'D', 'C', 'D', 'C', 'E'])) // ->
+console.log(fruitsIntoBaskets(['B', 'O', 'C', 'D', 'C', 'D', 'C', 'E'])) // -> 5
 
