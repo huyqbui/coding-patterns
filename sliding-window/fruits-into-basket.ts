@@ -42,7 +42,7 @@ const fruitsIntoBaskets = function(fruits: string[]) {
     const item = fruits[end]
     item in basket ? basket.get(item).val++ : basket.set(item, {val: 1});
     // while hashmap length > 2, subtract a fruit from the basket
-    while (Object.keys(basket).length > 2) {
+    while (basket.size > 2) {
       const leftItem = fruits[start];
       basket.get(leftItem).val--;
       // if value of that fruit type is 0, delete it from basket
@@ -58,5 +58,6 @@ const fruitsIntoBaskets = function(fruits: string[]) {
   return maxLength;
 };
 
-console.log(fruitsIntoBaskets(['A', 'B', 'C', 'A', 'C'])) // -> 5
+console.log(fruitsIntoBaskets(['A', 'B', 'C', 'A', 'C'])) // -> 3
+console.log(fruitsIntoBaskets(['B', 'O', 'C', 'D', 'C', 'D', 'C', 'E'])) // ->
 
