@@ -35,6 +35,8 @@ Output: true
 Explanation: The string contains "acb" which is a permutation of the given pattern.
 
 */
+
+// Time: Linear O(n + m) n = str, m = pattern | Space: Constant O(m) where hash map could have m keys
 const findPermutation = (str: string, pattern: string) => {
   // create a hash map to store pattern chars and their frequency
   const hashMap: {[key: string]: number} = {}

@@ -19,6 +19,7 @@ Explanation: The numbers at index 0 and 2 add up to 11: 2+9=11
 
 */
 
+// Time: Linear O(n) where n = elements in arr | Space: Constant O(1) 
 const targetSum = function(arr: number[], targetSum: number) {
   // store ref to start, end, currSum
   let start: number = 0, end: number = arr.length - 1, currSum: number = 0
