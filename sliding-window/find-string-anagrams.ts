@@ -23,10 +23,11 @@ Explanation: The three anagrams of the pattern in the given string are "bca", "c
 */
 
 
-const findStringAnagrams = (str, pattern) => {
-  const result = [];
+const findStringAnagrams = (str: string, pattern: string) => {
+  const result: number[] = [];
   // store start, end, freq obj, matched
-  let start = 0, freq = {}, matched = 0
+  let start = 0, matched = 0 
+  const freq: {[key: string]: number} = {}
   // add all chars in pattern to freq obj
   for (let i =0; i < pattern.length; i++) {
     let char = pattern[i];
