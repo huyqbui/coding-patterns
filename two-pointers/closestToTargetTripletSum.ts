@@ -36,7 +36,7 @@ const closestToTargetTripletSum = (arr: number[], target: number) => {
     // establish pointers, then grab sum of target minus the triplet
     while (left < right) {
       let sum = currNum + arr[left] + arr[right];
-      // if abs value of sum < abs value of closest or sum > closest, reassign closest
+      // if sum - target is less than our closestSum - target, we reassign closestSum
       let closestCheck = (Math.abs(sum - target) < Math.abs(closestSum - target));
       if (closestCheck) closestSum = sum;
 
