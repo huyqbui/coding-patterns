@@ -25,31 +25,27 @@ Explanation: The triplet [1, 1, 1] has the closest sum to the target.
 */
 
 const closestToTargetTripletSum = (arr: number[], target: number) => {
-  // store and track closestDiff;
-  let closestDiff: number = Infinity;
+  // store and track closestSum;
+  let closestSum: number = Infinity;
   // sort the arr, then iterate through each num in arr
   arr.sort((a, b) => a - b);
   for (let i = 0; i < arr.length; i++) {
     let currNum: number  = arr[i], 
       left: number = i + 1, 
       right: number = arr.length -1;
-    // establish pointers, then grab diff of target minus the triplet
-    // if diff = 0, return target
+    // establish pointers, then grab sum of target minus the triplet
     while (left < right) {
-      let diff = target - currNum - arr[left] - arr[right];
-      if (diff === 0) return target;
-      
-      // if abs value of diff < abs value of closest or diff > closest, reassign closest
-      let diffLessThanClosest = (Math.abs(diff) < Math.abs(closestDiff));
-      let diffsEqualCheck = ((Math.abs(diff) === Math.abs(closestDiff)) && diff > closestDiff);
-      if (diffLessThanClosest || diffsEqualCheck) closestDiff = diff;
+      let sum = currNum + arr[left] + arr[right];
+      // if abs value of sum < abs value of closest or sum > closest, reassign closest
+      let closestCheck = (Math.abs(sum - target) < Math.abs(closestSum - target));
+      if (closestCheck) closestSum = sum;
 
-      // move left or right pointer depending on if diff greater than 0 or not
-      if (diff > 0) left++;
-      else right--;
+      // move left or right pointer depending on if sum greater than 0 or not
+      if (sum > target) right--;
+      else left++;
     }
   }
-  return target - closestDiff;
+  return closestSum;
 };
 
 console.log(closestToTargetTripletSum([-2, 0, 1, 2], 2)) //-> 1
