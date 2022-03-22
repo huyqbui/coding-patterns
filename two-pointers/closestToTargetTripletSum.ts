@@ -55,6 +55,8 @@ console.log(closestToTargetTripletSum([1, 0, 1, 0, 1], 100)) //-> 3
 
 // Extension: Write a function to return the list of all such triplets instead of the count. 
 // How will the time complexity change in this case?
+
+// Time: O(N^3) due to the nested loops | Space: O(N) due to sorting the array
 const closestToTargetTripletSumList = (arr: number[], target: number) => {
   // store and track  list of triplets
   const triplets: number[][] = [];
