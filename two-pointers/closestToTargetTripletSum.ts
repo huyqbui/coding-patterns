@@ -23,7 +23,7 @@ Output: 3
 Explanation: The triplet [1, 1, 1] has the closest sum to the target.
 
 */
-
+// Time: O(N * logN) due to sorting array | Space: O(N) from sorting
 const closestToTargetTripletSum = (arr: number[], target: number) => {
   // store and track closestSum;
   let closestSum: number = Infinity;
