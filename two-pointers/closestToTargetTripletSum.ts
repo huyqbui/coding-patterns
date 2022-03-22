@@ -53,4 +53,39 @@ console.log(closestToTargetTripletSum([-3, -1, 1, 2], 1)) //-> 0
 console.log(closestToTargetTripletSum([1, 0, 1, 0, 1], 100)) //-> 3
 
 
+// Extension: Write a function to return the list of all such triplets instead of the count. 
+// How will the time complexity change in this case?
+const closestToTargetTripletSumList = (arr: number[], target: number) => {
+  // store and track  list of triplets
+  const triplets: number[][] = [];
+  // sort the arr, then iterate through each num in arr
+  arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++) {
+    let currNum: number  = arr[i], 
+      left: number = i + 1, 
+      right: number = arr.length -1;
+    // establish pointers, then grab sum of target minus the triplet
+    while (left < right) {
+      let sum = currNum + arr[left] + arr[right];
+      // if sum less than target, then we can push in all our triplets
+      if (sum < target) {
+        for (let j = right; j > left; j--) {
+          triplets.push([arr[i], arr[left], arr[j]])
+        }
+        // move left or right pointer depending on if sum greater than 0 or not
+        left++;
+      }
+      else right--;
+    }
+  }
+  return triplets;
+};
+
+console.log(closestToTargetTripletSumList([-1, 0, 2, 3], 3));
+  // -> [ [-1, 0, 3], [-1, 0, 2] ]
+console.log(closestToTargetTripletSumList([-1, 4, 2, 1, 3], 5));
+  // -> [ [-1, 1, 4], [-1, 1, 3], [-1, 1, 2], [-1, 2, 3] ]
+
+
+
 
