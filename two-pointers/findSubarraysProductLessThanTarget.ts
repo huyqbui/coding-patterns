@@ -1,3 +1,5 @@
+// Time: O(N^3), O(N) for iterating through array & O(N^2) for generating subArrays
+// Space: O(N) for the tempSubArrays, but O(N^3) for overall input + output
 const findSubarraysProductLessThanTarget = (arr: number[], target: number) => {
   // sliding window + 2 pointer approach
   // create a result array, init product at 1, right & left at 0
