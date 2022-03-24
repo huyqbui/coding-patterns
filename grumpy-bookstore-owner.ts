@@ -30,17 +30,35 @@ The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 
 */
 
 const maxSatisfied = function(customers: number[], grumpy: number[], minutes: number) {
-  // const grumpy = [0, 1, 0, 1, 0, 1, 0, 1] = 
-  // const custom = [1, 0, 1, 2, 1, 1, 7, 5] = 18
-  // const mHappy = [1, 0, 1, 0, 1, 0, 7, 0] = 10  
-  // const mGrump = [0, 0, 0, 2, 0, 1, 0, 5] = 8
+  let happy = 0,
+  secretHappy = 0,
+  left = 0,
+  max = 0;
   
-  
+  // iterate through customers, grab the total of happy customers when owner's mood is 0,
+  for (let end = 0; end < customers.length; end++) {
+    const ownerMood = grumpy[end]
+    const curr = customers[end];
+    if (ownerMood === 0) {
+      happy += curr;
+      
+      // else grab and store the highest total of secretHappy customers when owner's mood is 1
+    } else {
+      secretHappy += curr;
+      max = Math.max(max, secretHappy)
+    }
+    
+    // slide window to adjust the total of secretHappy customers according to minutes
+    if (end >= minutes) {
+      if (grumpy[left] === 1) {
+        secretHappy -= customers[left]
+      }
+      left++
+    }
+  }
+  return happy + max
+} 
 
-};
 
-const grumpy: number[] = [0, 1, 0, 1, 0, 1, 0, 1];
-const custom: number[] = [1, 0, 1, 2, 1, 1, 7, 5]; // customers
-const minutes: number = 3;
-
-console.log(maxSatisfied(custom, grumpy, minutes))
+console.log(maxSatisfied([1, 0, 1, 2, 1, 1, 7, 5], [0, 1, 0, 1, 0, 1, 0, 1], 3)) //-> 16
+console.log(maxSatisfied([3], [1], 1)) //-> 3
