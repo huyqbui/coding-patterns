@@ -28,6 +28,7 @@ class Node {
   }
 }
 
+// Time: O(N) where N is length of LinkedList | Space: O(1) Constant
 const findMiddleLinkedList = function(head) {
   // use a fast/slow pointers approach
   let slow = head,
