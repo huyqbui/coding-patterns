@@ -26,6 +26,7 @@ class Node {
   }
 }
 
+// Time: O (N) where N is length of linkedlist | Space: O(1) Constant
 const palindromeLinkedList = (head) => {
   // cover edge cases
   if (!head || !head.next) return true;
