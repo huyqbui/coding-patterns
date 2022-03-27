@@ -30,7 +30,7 @@ we merged them into one.
 // Space: O(N) where N is the array list of merged intervals
 const mergeIntervals = (intervals: number[][]): number[][] => {
   // sort the intervals array
-  const sorted = intervals.sort((a, b) => a[0] - b[0])
+  intervals.sort((a, b) => a[0] - b[0])
 
   // initialize an empty array to store merged intervals
   const merged: number[][] = [];
@@ -55,5 +55,5 @@ const mergeIntervals = (intervals: number[][]): number[][] => {
 }
 
 console.log(mergeIntervals([ [2, 5], [7, 9], [1 ,4] ])) //-> [ [1,5], [7,9] ]
-console.log(mergeIntervals([ [6, 7], [2, 4], [5, 9] ])) //-> [ [2,4], [5,9] ]
-console.log(mergeIntervals([ [1, 4], [2, 6], [3, 5] ])) //-> [ [1,6] ]
+// console.log(mergeIntervals([ [6, 7], [2, 4], [5, 9] ])) //-> [ [2,4], [5,9] ]
+// console.log(mergeIntervals([ [1, 4], [2, 6], [3, 5] ])) //-> [ [1,6] ]
