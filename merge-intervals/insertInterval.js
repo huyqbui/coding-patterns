@@ -34,7 +34,7 @@ If newInterval overlaps with curr Interval at all
 */
 
 // Time: O(N) where N is number of intervals | Space: O(N) where N is the array of merged intervals
-const insertInterval3 = (intervals, newInterval) => {
+const insertInterval = (intervals, newInterval) => {
   if (intervals.length === 0) { // handle edge case
     return [ newInterval ];
   }
@@ -62,5 +62,7 @@ const insertInterval3 = (intervals, newInterval) => {
   merged.push(newInt)
   return merged;
 }
-console.log(insertInterval3([ [1,3], [5,7], [8,12] ], [4,6])) //-> [ [1,3], [4,7], [8,12] ]
-console.log(insertInterval3([ [1,5] ], [2,3])) //-> [ [1,5 ]
+console.log(insertInterval([ [1,3], [5,7], [8,12] ], [4,6])) //-> [ [1,3], [4,7], [8,12] ]
+console.log(insertInterval([ [1,3], [5,7], [8,12] ], [4,10])) //-> [ [1,3], [4,12] ]
+console.log(insertInterval([ [2,3],[5,7] ], [1,4])) //-> [ [1,4], [5,7] ]
+console.log(insertInterval([ [1,5] ], [2,3])) //-> [ [1,5 ]
