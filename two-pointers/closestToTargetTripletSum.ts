@@ -29,6 +29,7 @@ const closestToTargetTripletSum = (arr: number[], target: number) => {
   let closestSum: number = Infinity;
   // sort the arr, then iterate through each num in arr
   arr.sort((a, b) => a - b);
+  console.log(arr)
   for (let i = 0; i < arr.length; i++) {
     let currNum: number  = arr[i], 
       left: number = i + 1, 
