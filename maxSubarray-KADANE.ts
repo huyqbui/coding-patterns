@@ -39,3 +39,8 @@ const maxSubarray = (input: number[]) => {
 
 console.log(maxSubarray([15, 20, -5, 10])) //-> 40
 console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5])) //-> 18
+
+const arr1: number[] = [1, 3, 5, 7]
+const arr2: number[] = [0, 2, 6, 8, 9]
+
+console.log([...arr1, ...arr2].sort((a, b) => a- b))

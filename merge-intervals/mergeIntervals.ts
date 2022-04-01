@@ -40,13 +40,15 @@ const mergeIntervals = (intervals: number[][]): number[][] => {
   // iterate through rest of intervals, looking for overlapping numbers
   for (let i = 1; i < intervals.length; i++) {
     // deconstruct current interval tuple
-    const [iStart, iEnd] = intervals[i]; 
+    let currInt = intervals[i]; 
+    console.log(currInt)
     // if overlapping intervals, re-adjust the 'end' (grab the greater of the end's)
-    if (iStart <= end) end = Math.max(end, iEnd);
-    else { // else non-overlapping intervals, so push the previous interval & then reassign start, end to current interval
+    if (currInt[0] <= end) {
+      end = Math.max(end, currInt[1]);
+    } else { // else non-overlapping intervals, so push the previous interval & then reassign start, end to current interval
       merged.push([start, end]);
-      start = iStart;
-      end = iEnd;
+      start = currInt[0];
+      end = currInt[1];
     }
   }
   // add the last interval
@@ -54,6 +56,7 @@ const mergeIntervals = (intervals: number[][]): number[][] => {
   return merged;
 }
 
-console.log(mergeIntervals([ [2, 5], [7, 9], [1 ,4] ])) //-> [ [1,5], [7,9] ]
+// console.log(mergeIntervals([ [2, 5], [7, 9], [1 ,4] ])) //-> [ [1,5], [7,9] ]
+console.log(mergeIntervals([ [1 ,4], [2, 5] ])) //-> [ [1, 5] ]
 // console.log(mergeIntervals([ [6, 7], [2, 4], [5, 9] ])) //-> [ [2,4], [5,9] ]
 // console.log(mergeIntervals([ [1, 4], [2, 6], [3, 5] ])) //-> [ [1,6] ]
