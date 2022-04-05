@@ -34,12 +34,12 @@ If newInterval overlaps with curr Interval at all
 */
 
 // Time: O(N) where N is number of intervals | Space: O(N) where N is the array of merged intervals
-const insertInterval = (intervals, newInterval) => {
+const insertInterval = (intervals: number[][], newInterval: number[]): number[][] => {
   if (intervals.length === 0) { // handle edge case
     return [ newInterval ];
   }
 
-  const merged = [];
+  const merged: number[][] = [];
   let newInt = newInterval;
 
   for (const interval of intervals) {
