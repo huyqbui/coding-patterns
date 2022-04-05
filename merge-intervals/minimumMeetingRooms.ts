@@ -34,7 +34,6 @@ const Heap = require('collections/heap');
 const minMeetingRooms = (meetings: number[][]) => {
   // sort the meetings by start times
   meetings.sort((a, b) => a[0] - b[0])
-  console.log(meetings)
 
   let minRooms = 1,
     minHeap = new Heap([], null, ((a: number[], b: number[]) => b[1] - a[1]));
