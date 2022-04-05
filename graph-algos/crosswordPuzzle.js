@@ -51,7 +51,6 @@ function crosswordPuzzle(crossword, words) {
       // check that we are staying in bounds
       let outColBounds = i < 0 || i >= columns,
           outRowBounds = j < 0 || j >= rows;
-
       if (
           outColBounds ||
           outRowBounds || 
@@ -61,11 +60,14 @@ function crosswordPuzzle(crossword, words) {
       visited.add(i + ',' + j);
       if (words[wordIndex] === ';') wordIndex++;
       if (newCrossword[i][j-1] === words[wordIndex]) wordIndex++
+      if ( i >= 1 && newCrossword[i-1][j] === words[wordIndex]) wordIndex++
       newCrossword[i][j] = words[wordIndex];
       wordIndex++;
       console.log(`${words[wordIndex]}: ${newCrossword[i][j]}`)
 
       fillWordsVertical(newCrossword, i + 1, j, wordIndex) // DFS vertically
+      // fillWordsVertical(newCrossword, i, j + 1, wordIndex) // DFS horizontal
+
   } 
   return newCrossword;
 }
@@ -83,6 +85,7 @@ const grid = [
   ['+','+','+','+','+','-','+','+','+','+'],
 ]
 
+//                    *
 const words = 'LONDON;DELHI;ICELAND;ANKARA'
 
 console.log(crosswordPuzzle(grid, words))
