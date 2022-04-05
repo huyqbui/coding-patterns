@@ -29,6 +29,8 @@ Explanation: We will need one room for [2,3] and [3,5], and another room for [2,
 
 const Heap = require('collections/heap');
 
+// Time: O(N * logN) from sorting array, and then iterating through meetings
+// Space: O(N) due to sorting
 const minMeetingRooms = (meetings: number[][]) => {
   // sort the meetings by start times
   meetings.sort((a, b) => a[0] - b[0])
@@ -39,13 +41,13 @@ const minMeetingRooms = (meetings: number[][]) => {
   
   // remove all meetings that have ended
   for (let i = 0; i < meetings.length; i++) {
-    // compare current meeting's start with minimum meeting's end time
+    // compare roomsent meeting's start with minimum meeting's end time
     // if times do not overlap, remove the minimum meeting
     while (minHeap.length > 0 && meetings[i][0] >= minHeap.peek()[1]) {
       minHeap.pop()
     }
 
-    // add current meeting into minHeap
+    // add roomsent meeting into minHeap
     minHeap.push(meetings[i]);
 
     // all active meetings are in minHeap, so minRooms will keep track of max rooms needed
@@ -54,7 +56,38 @@ const minMeetingRooms = (meetings: number[][]) => {
   return minRooms
 }
 
+// Time: O(N * logN) from sorting array, and then iterating through meetings
+// Space: O(N) due to sorting
+const minMeetingRoomsNoHeap = (meetings: number[][]) => {
+  // sort meetings, by start times
+  meetings.sort((a, b) => a[0] - b[0]);
+                         
+  /* use two pointers approach:
+     if meetings[next]start < meetings[curr]end, then curr meeting is still happening
+     so we need increase rooms to hold those meetings
+     if meetings[next]start >= meeting[curr]end, then room is now free
+     so we can decrement rooms by one
+  */
+  let next = 1,
+    curr = 0,
+    rooms = 1,
+    minRooms = 1;
+  while (next < meetings.length && curr < meetings.length) {
+    if (meetings[next][0] < meetings[curr][1]) {
+      rooms++;
+      next++;
+    } else {
+      rooms--;
+      curr++
+    }
+    minRooms = Math.max(rooms, minRooms)
+  }
+  return minRooms
+}
+
 console.log(minMeetingRooms([ [1,4], [2,5], [7,9] ])) //-> 2
 console.log(minMeetingRooms([ [6,7], [2,4], [8,12] ])) //-> 1
 console.log(minMeetingRooms([ [1,4], [2,3], [3,6] ])) //-> 2
 console.log(minMeetingRooms([ [4,5], [2,3], [2,4], [3,5] ])) //-> 2
+console.log(minMeetingRoomsNoHeap([ [4,5], [2,3], [2,4], [3,5] ])) //-> 2
+// [2,3], [2,4], [3,5], [4,5]
