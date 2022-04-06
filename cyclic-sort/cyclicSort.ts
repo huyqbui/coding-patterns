@@ -22,14 +22,15 @@ Example 3:
   Output: [1, 2, 3, 4, 5, 6]
 */
 
-const cyclicSort = (nums: number[]): number[] => {
+// Time: O(N) || Space: O(1)
+const cyclicSort = (nums: number[]) => {
   // iterate through array
   // store a pointer that will be nums[i] - 1
   // if current num is not equal to num at our pointer, we'll swap them
   // otherwise increment i
-  let i = 0,
-    j = nums[i] - 1;
+  let i = 0;
   while (i < nums.length) {
+    let j = nums[i] - 1;
     if (nums[i] !== nums[j]) [nums[i], nums[j]] = [nums[j], nums[i]];
     else i++;
   }
@@ -38,4 +39,4 @@ const cyclicSort = (nums: number[]): number[] => {
 
 console.log(cyclicSort([3, 1, 5, 4, 2])); //-> [1, 2, 3, 4, 5]
 console.log(cyclicSort([2, 6, 4, 3, 1, 5])); //-> [1, 2, 3, 4, 5, 6]
-console.log(cyclicSort([1, 5, 6, 4, 7, 3, 2])); //-> [1, 2, 3, 4, 5, 6, 7]
+console.log(cyclicSort([1, 5, 6, 8, 4, 7, 3, 2])); //-> [1, 2, 3, 4, 5, 6, 7, 8]
