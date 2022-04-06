@@ -33,7 +33,7 @@ const employeeFreeTime = (hours:number[][][]): number[][] => {
     if next[start] > currEnd
       -> push the currEnd, next[start]
       -> reassign currStart & currEnd
-    other grab the greater of currEnd and next[end]
+    otherwise, grab the greater of currEnd and next[end]
   */
   let currStart = allHours[0][0],
     currEnd = allHours[0][1];
