@@ -17,9 +17,8 @@ Example 2:
   Explanation: '3' is duplicated and '5' is missing.
 */
 
-// Time: O(N) | Space: O(1) if ignoring size of duplicates array
+// Time: O(N) | Space: O(1)
 const findCorrputNumbers = (nums: number[]) => {
-  const corruptedNums = [];
   // cyclic sort, then iterate through sorted
   // if num does not match it's index, push the num, and index + 1
 
@@ -33,9 +32,9 @@ const findCorrputNumbers = (nums: number[]) => {
   }
   
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== i + 1) corruptedNums.push(nums[i], i + 1)
+    if (nums[i] !== i + 1) return [ nums[i], i + 1]
   }
-  return corruptedNums;
+  return [-1, -1];
 };
 
 console.log(findCorrputNumbers([3, 1, 2, 5, 2])); // [2, 4]
