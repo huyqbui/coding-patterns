@@ -27,3 +27,4 @@ myList.next.next.next = new Nodee('e')
 
 console.log(myList)
 console.log(reverse(myList));
+
