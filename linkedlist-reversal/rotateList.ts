@@ -21,6 +21,17 @@ class Node4 {
   }
 }
 
+/* Approach:
+  1.  - establish length of our list with a ptr
+      - get the remainder of k from length
+  2.  - have another pointer 'prev', reset both to beginning
+      - move ptr 'k' steps ahead,
+      - then move both pointers till ptr reaches end 
+  3.  - link ptr's next back to head
+      - prev will end at k-th steps from end, it's next will be our new head
+      - reassign prev's next to null to break the loop
+*/
+
 // Time: O(N) | Space: O(1)
 const rotateList = (head: Node4 | null, k: number) => {
   // handle edge cases
