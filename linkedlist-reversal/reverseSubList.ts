@@ -3,7 +3,7 @@ Given the head of a LinkedList and two positions ‘p’ and ‘q’,
 reverse the LinkedList from position ‘p’ to ‘q’.
 
 Example 1:
-  head: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+  head: 1 -> 2 -> 3 -> 4 -> 5 -> 6 (where each number is a Node)
   p: 2
   q: 4
   output: 1 -> 4 -> 3 -> 2 -> 5 -> 6
@@ -20,6 +20,7 @@ class Node1  {
 
 // Time: O(N) where N is number of nodes | Space: O(1)
 const reverseSubList = (head: Node1 | null, p: number, q: number) => {
+  if (p === q) return head; // -> handle edge case
   // cycle through list to have curr start at p-th node
   let i = 0,
     curr = head,
