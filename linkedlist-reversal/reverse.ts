@@ -23,8 +23,8 @@ const myList = new Nodee('a');
 myList.next = new Nodee('b');
 myList.next.next = new Nodee('c');
 myList.next.next.next = new Nodee('d');
-myList.next.next.next = new Nodee('e')
+myList.next.next.next.next = new Nodee('e')
 
-console.log(myList)
-console.log(reverse(myList));
+console.log(JSON.stringify(myList, null, 4))
+console.log(JSON.stringify(reverse(myList), null, 4));
 
