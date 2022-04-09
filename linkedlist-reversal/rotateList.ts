@@ -81,3 +81,5 @@ Lists.next.next.next.next = new Node4(5);
 
 console.log(JSON.stringify(rotateList(Lists, 2), null, 4));
 // -> 4 - 5 - 1 - 2 - 3
+
+console.log(1 % 2)
