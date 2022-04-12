@@ -16,8 +16,6 @@ Example 1:
   output: [ [12, 7, 4], [12, 1, 10] ]
 */
 
-const Deque = require('../node_modules/collections/deque'); //http://www.collectionsjs.com/deque
-
 class TreeNode {
   val: any;
   left: TreeNode | null;
