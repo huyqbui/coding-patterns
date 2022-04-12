@@ -28,3 +28,5 @@ myList.next.next.next.next = new Nodee('e')
 console.log(JSON.stringify(myList, null, 4))
 console.log(JSON.stringify(reverse(myList), null, 4));
 
+export {}
+

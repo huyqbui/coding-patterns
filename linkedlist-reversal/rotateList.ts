@@ -12,7 +12,7 @@ Example 1:
   output: 4 - 5 - 1 - 2 - 3
 */
 
-class Node4 {
+class Nodee {
   value: any;
   next: any;
   constructor(value: any, next = null) {
@@ -33,7 +33,7 @@ class Node4 {
 */
 
 // Time: O(N) | Space: O(1)
-const rotateList = (head: Node4 | null, k: number) => {
+const rotateList = (head: Nodee | null, k: number) => {
   // handle edge cases
   if (!head || k <= 0) return head;
 
@@ -73,13 +73,13 @@ const rotateList = (head: Node4 | null, k: number) => {
   return head;
 };
 
-const Lists = new Node4(1);
-Lists.next = new Node4(2);
-Lists.next.next = new Node4(3);
-Lists.next.next.next = new Node4(4);
-Lists.next.next.next.next = new Node4(5);
+const myList = new Nodee(1);
+myList.next = new Nodee(2);
+myList.next.next = new Nodee(3);
+myList.next.next.next = new Nodee(4);
+myList.next.next.next.next = new Nodee(5);
 
-console.log(JSON.stringify(rotateList(Lists, 2), null, 4));
+console.log(JSON.stringify(rotateList(myList, 2), null, 4));
 // -> 4 - 5 - 1 - 2 - 3
 
-console.log(1 % 2)
+export {}

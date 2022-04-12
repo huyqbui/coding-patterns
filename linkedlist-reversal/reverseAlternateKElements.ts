@@ -12,7 +12,7 @@ Example 1:
   output: 3 - 2 - 1 - 6 - 5 - 4 - 8 - 7
 */
 
-class Node3 {
+class Nodee {
   value: any;
   next: any;
   constructor(value: any, next = null) {
@@ -29,7 +29,7 @@ class Node3 {
 */
 
 // Time: O(N) | Space: O(1)
-const reverseAltKElements = (head: Node3 | null, k: number) => {
+const reverseAltKElements = (head: Nodee | null, k: number) => {
   // handle edge cases
   if (k <= 1 || head === null) return head;
 
@@ -74,14 +74,16 @@ const reverseAltKElements = (head: Node3 | null, k: number) => {
   return head;
 };
 
-const Listy = new Node3(1);
-Listy.next = new Node3(2);
-Listy.next.next = new Node3(3);
-Listy.next.next.next = new Node3(4);
-Listy.next.next.next.next = new Node3(5);
-Listy.next.next.next.next.next = new Node3(6);
-Listy.next.next.next.next.next.next = new Node3(7);
-Listy.next.next.next.next.next.next.next = new Node3(8);
+const myList = new Nodee(1);
+myList.next = new Nodee(2);
+myList.next.next = new Nodee(3);
+myList.next.next.next = new Nodee(4);
+myList.next.next.next.next = new Nodee(5);
+myList.next.next.next.next.next = new Nodee(6);
+myList.next.next.next.next.next.next = new Nodee(7);
+myList.next.next.next.next.next.next.next = new Nodee(8);
 
-console.log(JSON.stringify(reverseAltKElements(Listy, 2), null, 4));
+console.log(JSON.stringify(reverseAltKElements(myList, 2), null, 4));
+
+export {}
 

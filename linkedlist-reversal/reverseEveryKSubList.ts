@@ -12,7 +12,7 @@ Example 1:
   output: 3 - 2 - 1 - 6 - 5 - 4 - 8 - 7
 */
 
-class Node2  {
+class Nodee  {
   value: any;
   next: any;
   constructor(value: any, next = null) {
@@ -22,7 +22,7 @@ class Node2  {
 }
 
 // Time: O(N) | Space: O(1)
-const reverseEveryKSubLists = (head: Node2 | null, k: number) => {
+const reverseEveryKSubLists = (head: Nodee | null, k: number) => {
   // handle edge cases
   if (k <= 1 || head === null) return head; 
 
@@ -65,13 +65,15 @@ const reverseEveryKSubLists = (head: Node2 | null, k: number) => {
   return head;
 }
 
-const franzList = new Node2(1)
-franzList.next = new Node2(2)
-franzList.next.next = new Node2(3)
-franzList.next.next.next = new Node2(4)
-franzList.next.next.next.next = new Node2(5)
-franzList.next.next.next.next.next = new Node2(6)
-franzList.next.next.next.next.next.next = new Node2(7)
-franzList.next.next.next.next.next.next.next = new Node2(8)
+const myList = new Nodee(1)
+myList.next = new Nodee(2)
+myList.next.next = new Nodee(3)
+myList.next.next.next = new Nodee(4)
+myList.next.next.next.next = new Nodee(5)
+myList.next.next.next.next.next = new Nodee(6)
+myList.next.next.next.next.next.next = new Nodee(7)
+myList.next.next.next.next.next.next.next = new Nodee(8)
 
-console.log(JSON.stringify(reverseEveryKSubLists(franzList, 3), null, 4))
+console.log(JSON.stringify(reverseEveryKSubLists(myList, 3), null, 4))
+
+export {}

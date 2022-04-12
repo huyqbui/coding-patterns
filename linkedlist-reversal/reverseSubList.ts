@@ -9,7 +9,7 @@ Example 1:
   output: 1 -> 4 -> 3 -> 2 -> 5 -> 6
 */
 
-class Node1  {
+class Nodee  {
   value: any;
   next: any;
   constructor(value: any, next = null) {
@@ -19,7 +19,7 @@ class Node1  {
 }
 
 // Time: O(N) where N is number of nodes | Space: O(1)
-const reverseSubList = (head: Node1 | null, p: number, q: number) => {
+const reverseSubList = (head: Nodee | null, p: number, q: number) => {
   if (p === q) return head; // -> handle edge case
   // cycle through list to have curr start at p-th node
   let i = 0,
@@ -60,11 +60,11 @@ const reverseSubList = (head: Node1 | null, p: number, q: number) => {
 
 }
 
-const list = new Node1(1)
-list.next = new Node1(2)
-list.next.next = new Node1(3)
-list.next.next.next = new Node1(4)
-list.next.next.next.next = new Node1(5)
-list.next.next.next.next.next = new Node1(6)
+const myList = new Nodee(1)
+myList.next = new Nodee(2)
+myList.next.next = new Nodee(3)
+myList.next.next.next = new Nodee(4)
+myList.next.next.next.next = new Nodee(5)
+myList.next.next.next.next.next = new Nodee(6)
 
-console.log(JSON.stringify(reverseSubList(list, 2, 4), null, 4))
+console.log(JSON.stringify(reverseSubList(myList, 2, 4), null, 4))
