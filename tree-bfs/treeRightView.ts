@@ -50,7 +50,7 @@ const treeRightView = (root: TreeNode) => {
 
   // use a dequeue to push root nodes in FIFO order
   const treeRightNodes = [];
-  const queue = new Deque()
+  const queue = new Deque();
   queue.push(root)
 
 
