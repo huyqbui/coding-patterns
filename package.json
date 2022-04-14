@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/huyqbui/coding-patterns#readme",
   "dependencies": {
+    "@datastructures-js/priority-queue": "^6.0.0",
     "collections": "^5.1.13"
   },
   "devDependencies": {
