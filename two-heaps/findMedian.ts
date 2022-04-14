@@ -15,6 +15,26 @@ Example 1:
   findMedian() -> output: 3
   insertNum(4)
   findMedian() -> output: 3.5
+
+  Line 4: Char 13: error TS2749: 'MaxPriorityQueue' refers to a value, but is being used as a type here. Did you mean 'typeof MaxPriorityQueue'?
+Line 5: Char 13: error TS2749: 'MaxPriorityQueue' refers to a value, but is being used as a type here. Did you mean 'typeof MaxPriorityQueue'?
+Line 9: Char 24: error TS2347: Untyped function calls may not accept type arguments.
+Line 10: Char 24: error TS2347: Untyped function calls may not accept type arguments.
+
+/.nvm/versions/node/v16.13.2/lib/node_modules/@datastructures-js/priority-queue/src/priorityQueue.js:79
+      throw new Error('missing priority number or constructor callback');
+            ^
+Error: missing priority number or constructor callback
+    Line 79: Char 13 in priorityQueue.js (MinPriorityQueue.enqueue)
+    Line 19: Char 24 in solution.ts (MedianFinder.addNum)
+    Line 49: Char 26 in solution.ts (helper_select_method)
+    Line 97: Char 22 in solution.ts (Object.<anonymous>)
+    Line 16: Char 8 in runner.js (Object.runner)
+    Line 44: Char 26 in solution.ts (Object.<anonymous>)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
 */
 
 // importing PriorityQueue as a heap structure, which is allowed on leetcode
