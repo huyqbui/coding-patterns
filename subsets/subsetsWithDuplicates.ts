@@ -44,7 +44,7 @@ const subsetsWithDuplicates = (nums: number[]) => {
   }
 };
 
-console.log(subsetsWithDuplicates([1, 3, 3]));
+// console.log(subsetsWithDuplicates([1, 3, 3]));
 //-> [ [], [1], [3], [1,3], [3,3], [1,3,3] ]
 console.log(subsetsWithDuplicates([1, 5, 3, 3]));
 // ->[ [], [1], [1,3], [1,3,3], [1,3,3,5], [1,3,5], [1,5], [3], [3,3], [3,3,5], [3,5], [5] ]
