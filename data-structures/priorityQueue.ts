@@ -104,4 +104,4 @@ queue.dequeue();
 
 console.log(queue);
 
-export {};
+export default PriorityQueue;
