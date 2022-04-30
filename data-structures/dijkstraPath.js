@@ -1,91 +1,79 @@
 import { PriorityQueue } from '@datastructures-js/priority-queue';
 
-/*
-1. The function should accept a start and finish node as arguments
-2. Create a distances, previous object. Create path array
-3. Convert edges to an adjacency list
-4. Add each node to the priority queue
-5. Start a loop that continues as long as the priority queue has values
-  - Dequeue a node and loop through each of its neighbors (using the adjacency list). 
-  - If the node is our finish, we are done!
-  - Calculate the distance between the start and our current node
-  - If that distance is less than what we have stored:
-    1. Update the distances and previous objects, 
-    2. Enqueue that node with its new, smaller distance.
+/* 
+  1. convert edges to an adjacency list
+  2. create dist object, prev object, path array, priorityQueue
+  3. iterate through each node in our list
+  4. fill distances w/ Infinity's, prev w/ nulls, enqueue priorityQueue with [node, Infinity]
+  5. reassign distance[start] to 0 & enqueue [start, 0]
+  6. while queue not empty, dequeue smallest node
+    if smallest = finish, we can exit and build paths
+    for each neighbor of smallest node
+      calculate distance between start and current node
+      if dist < what's in the distance object for that key
+        - reassign value in distance obj to dist
+        - create key for neighbor in prev and assign value as smallest
+        - enqueue that node with the new dist
 */
 
-function dijkstra(edges, start, finish) {
-  const queue = new PriorityQueue((a,b) => a[1] < b[1] ? -1 : 1);
-  const distances = {};
-  const previous = {}
-  let path = [];
-  let smallest;
-  const adjacencyList = buildGraph(edges);
+const dijkstra = (edges, start, finish) => {
+  const list = buildAdjacencyList(edges);
+  const dist = {};
+  const prev = {};
+  const pq = new PriorityQueue((a, b) => (a[1] < b[1] ? -1 : 1));
 
-  // fill distances with Infinity, fill previous with null
-  for (const node in adjacencyList) {
-      distances[node] = Infinity
-      queue.enqueue(node, Infinity)
-      previous[node] = null
+  for (const node in list) {
+    dist[node] = Infinity;
+    pq.enqueue([node, Infinity]);
+    prev[node] = null;
   }
 
-  distances[start] = 0;
-  queue.enqueue([start, 0])
+  dist[start] = 0;
+  pq.enqueue([start, 0]);
 
-  console.log(adjacencyList)
-
-
-  // DISTANCES[neighbor.val]    A:0     B:3     C:2     D:3    E:5
-  // PREVIOUS                   { B:A, C:A, D:C}
-  // QUEUE:                     [      ]
-
-  while (!queue.isEmpty()) {
-    smallest = queue.dequeue(); // [E:5]
-    console.log(smallest)
-
-    let curr = smallest[0]; 
-    console.log(curr)
-    
+  let smallest, distance, curr, paths;
+  while (!pq.isEmpty()) {
+    smallest = pq.dequeue();
+    curr = smallest[0];
 
     if (curr === finish) {
-      path = [finish]
+      paths = [finish];
       while (smallest[0] !== start) {
-        path.push(previous[smallest[0]])
-        smallest = previous[smallest[0]]
+        paths.push(prev[smallest[0]]);
+        smallest = prev[smallest[0]];
       }
       break;
     }
 
-    if (smallest[1] || distances[smallest[1]] !== Infinity) {
-      adjacencyList[curr].forEach(neighbor => {
+    if (smallest[1] || dist[smallest[1]] !== Infinity) {
+      list[curr].forEach((neighbor) => {
+        const { val, priority } = neighbor;
+        distance = dist[curr] + priority;
 
-        let dist = distances[curr] + neighbor.priority 
-
-        if (dist < distances[neighbor.val]) {
-          distances[neighbor.val] = dist
-          previous[neighbor.val] = curr;
-          queue.enqueue([neighbor.val, dist])
+        if (distance < dist[val]) {
+          dist[val] = distance;
+          prev[val] = curr;
+          pq.enqueue([val, distance]);
         }
-      })
+      });
     }
   }
 
-  console.log(path)
-  return path.reverse()
+  return `shortest path = ${paths.reverse()} & distance = ${dist[finish]}`;
 
-  function buildGraph(edges) {
-    const graph = {}
+  function buildAdjacencyList(edges) {
+    const list = {};
+
     for (const [src, dest, priority] of edges) {
+      if (!(src in list)) list[src] = [];
+      if (!(dest in list)) list[dest] = [];
 
-      if (!(src in graph)) graph[src] = []
-      if (!(dest in graph)) graph[dest] = []
-
-      graph[src].push({ val: dest, priority: priority });
-      graph[dest].push({ val: src, priority: priority });
+      list[src].push({ val: dest, priority: priority });
+      list[dest].push({ val: src, priority: priority });
     }
-    return graph;
+    return list;
   }
-}
+};
 
 const edges = [
   ['A', 'B', 3],
@@ -96,16 +84,7 @@ const edges = [
   ['D', 'E', 2],
 ];
 
-console.log(dijkstra(edges, 'A', 'D'));
-
-const newq = new PriorityQueue((a,b) => a[1] < b[1] ? -1 : 1)
-
-
-newq.enqueue(['Starbucks', 10])
-newq.enqueue(['Safeway', 5])
-newq.enqueue(['Target', 20])
-newq.enqueue(['Home', 0])
-const smallest = newq.dequeue()
-// console.log(smallest)
-// console.log(newq._heap)
-
+console.log(dijkstra(edges, 'A', 'E'));
+// shortest path = A,C,D,E & distance = 5
+console.log(dijkstra(edges, 'C', 'E'));
+// shortest path = C,D,E & distance = 3
