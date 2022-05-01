@@ -76,3 +76,5 @@ const weights = [1, 2, 3, 5];
 
 console.log(knapsack(profits, weights, 7)); //-> 22
 console.log(knapsack(profits, weights, 6)); //-> 16
+
+export {}
