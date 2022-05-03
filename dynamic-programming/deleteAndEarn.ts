@@ -85,7 +85,7 @@ const deleteAndEarnTabulation = (nums: number[]) => {
   let twoBack = 0;
   let oneBack = points[1] || 0;
 
-  for (let i = 2; i < maxNum; i++) {
+  for (let i = 2; i <= maxNum; i++) {
     let temp = oneBack;
     oneBack = Math.max(oneBack, twoBack + (points[i] || 0));
     twoBack = temp;
@@ -94,3 +94,5 @@ const deleteAndEarnTabulation = (nums: number[]) => {
 };
 
 console.log(deleteAndEarnTabulation([2, 2, 3, 3, 3, 4])); //-> 9
+console.log(deleteAndEarnTabulation([3, 4, 2])); //-> 6
+console.log(deleteAndEarnTabulation([3, 1])); //-> 6
