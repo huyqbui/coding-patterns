@@ -38,31 +38,34 @@ const longestCommonSubsequence = (text1: string, text2: string): number => {
     text1 = text2;
     text2 = temp;
   }
-  // create arrays for prev and curr to store the calculations of our subproblems
-  let prev = Array(text1.length + 1).fill(0);
-  let curr = [...prev];
+  // create arrays for prev and prev to store the calculations of our subproblems
+  let arr = Array(text1.length + 1).fill(0);
+  let prev = [...arr];
 
   // iterate through col & row, starting from last one
   for (let col = text2.length - 1; col >= 0; col--) {
-    // store the vals of prev for later
-    let temp = prev;
+    // store the vals of arr for later
+    let temp = arr;
     for (let row = text1.length - 1; row >= 0; row--) {
       if (text1.charAt(row) === text2.charAt(col)) {
-        // if char matches, then add one to prev's right
-        curr[row] = 1 + prev[row + 1];
+        // if char matches, then add one to val of arr's prev pos
+        prev[row] = 1 + arr[row + 1];
       } else {
-        // else get the greater of the prev val, or the curr val on the right
-        curr[row] = Math.max(prev[row], curr[row + 1]);
+        // else get the greater of the arr val, or the val of the prev pos
+        prev[row] = Math.max(arr[row], prev[row + 1]);
       }
     }
-    // swap the prev and curr
-    prev = curr;
-    curr = temp;
+    // swap the arr and prev
+    arr = prev;
+    prev = temp;
   }
-  return prev[0];
+  return arr[0];
 };
 
 console.log(longestCommonSubsequence('abcde', 'ace')); //-> 3
 console.log(longestCommonSubsequence('abc', 'def')); //-> 0
 console.log(longestCommonSubsequence('ezupkr', 'ubmrapg')); //-> 2
 console.log(longestCommonSubsequence('bsbininm', 'jmjkbkjkv')); //-> 1
+console.log(longestCommonSubsequence('ab', 'ba')); //-> 1
+
+export {}

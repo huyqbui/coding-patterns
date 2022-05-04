@@ -42,21 +42,38 @@ Constraints:
 const maximumScore = (nums: number[], multipliers: number[]) => {
   let n = nums.length,
     m = multipliers.length;
-  let arr = Array(m + 1).fill(0);
+  let arr = Array(n + 1).fill(0);
+  let prev = 0;
 
   for (let i = m - 1; i >= 0; i--) {
     let mult = multipliers[i];
     for (let left = i; left >= 0; left--) {
+      let temp = arr[left];
       let right = n - 1 - (i - left);
 
-      let takeLeft = mult * nums[left] + arr[i + 1];
+      let takeLeft = mult * nums[left] + prev;
       let takeRight = mult * nums[right] + arr[left];
 
       arr[left] = Math.max(takeLeft, takeRight);
+      prev = temp;
     }
+    prev = arr[i];
   }
   return arr[0];
 };
 
 console.log(maximumScore([1, 2, 3], [3, 2, 1])); //-> 14
-console.log(maximumScore([-5, -3, -3, -2, 7, 1], [-10, -5, 3, 4, 6])); //-> 102
+console.log(maximumScore([1, 2], [3, 2])); //-> 14
+
+const nums3 = [
+  555, 526, 732, 182, 43, -537, -434, -233, -947, 968, -250, -10, 470, -867,
+  -809, -987, 120, 607, -700, 25, -349, -657, 349, -75, -936, -473, 615, 691,
+  -261, -517, -867, 527, 782, 939, -465, 12, 988, -78, -990, 504, -358, 491,
+  805, 756, -218, 513, -928, 579, 678, 10,
+];
+const mult3 = [
+  783, 911, 820, 37, 466, -251, 286, -74, -899, 586, 792, -643, -969, -267, 121,
+  -656, 381, 871, 762, -355, 721, 753, -521,
+];
+
+console.log(maximumScore(nums3, mult3)); //-> 6861161
