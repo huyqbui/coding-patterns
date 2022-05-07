@@ -24,6 +24,8 @@ Example 3:
 
 // Time: O(N^3) for the nested loop, and the substring computation inside the nested loop
 // Space: O(n) where n is the length of the array 
+
+
 const wordBreak = (s: string, wordDict: string[]) => {
   if (!s) return false
   const arr = Array(s.length).fill(false);

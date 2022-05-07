@@ -24,26 +24,32 @@ Example 3:
 /* APPROACH:
     create an arr of size i where i is the amount we want to make up
     arr[i] stores the fewest number of coins to make up amount i
-    init all values in arr[i] to amount + 1
+    init all values in arr[i] to Infinity
     set arr[0] to 0 for our base case
-    create a for loop to iterate through each cell in arr
-      for each coin, if i - coin < 0, then we can't use that coin (so skip it)
-        arr[i] = min(arr[i], arr[i- coin] + 1)
+    for each coin:
+      create a for loop to iterate through each cell in arr
+      if current coin is less than or equal to index
+        find the prevAmount by checking arr[i - coin] + 1
+        arr[i] will be the min between itself and the prevAmount
 */
 
 // Time: O(n * m) where n is the amount, m is count of coins
 // Space: O(n) where n is the space used for the arr table
 const coinChange = (coins: number[], amount: number) => {
-  const arr = Array(amount + 1).fill(amount + 1);
+
+  const arr = Array(amount + 1).fill(Infinity);
   arr[0] = 0;
 
-  for (let i = 1; i <= amount; i++) {
-    for (const coin of coins) {
-      if (i - coin < 0) continue;
-      arr[i] = Math.min(arr[i], arr[i - coin] + 1);
+  for (const coin of coins) {
+    for (let i = 0; i < arr.length; i++) {
+      if (coin <= i) {
+        let prevAmount = arr[i - coin] + 1
+        arr[i] = Math.min(arr[i], prevAmount)
+      }
     }
   }
-  return arr[amount] === amount + 1 ? -1 : arr[amount];
+
+  return arr[amount] === Infinity ? -1 : arr[amount];
 };
 
 console.log(coinChange([1, 2, 5], 11)); //-> 3
