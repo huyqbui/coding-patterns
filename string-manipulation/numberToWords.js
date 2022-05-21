@@ -54,12 +54,13 @@ function numberToWords(num) {
     segment++;
   }
 
-  return result;
+  return result.trim();
 
   function parseHundreds(subStr, index, str) {
     // handle cases where we get leading zeros
     if (subStr[0] === '0' && subStr.length > 1) subStr = subStr.slice(1);
     if (subStr === '000') return '';
+
 
     for (let i = subStr.length - 1; i >= 0; i--) {
       let digit = subStr[i];
@@ -85,7 +86,7 @@ function numberToWords(num) {
       } else {
         if (index >= 2) {
           if (str !== '') str = dict[digit][0] + ' Hundred ' + str;
-          else str = dict[digit][0] + 'Hundred';
+          else str = dict[digit][0] + ' Hundred';
         } else {
           str = dict[digit][index] + str;
         }
@@ -98,27 +99,27 @@ function numberToWords(num) {
   // check each substring and concat a numeric string according to the segment
   function parseBeyondHundreds(output, segment) {
     if (segment === 3) {
-      if (output === '') output = output;
-      else output = output + ' Billion ';
+      if (output !== '') 
+        output = output + ' Billion ';
     }
     if (segment === 2) {
-      if (output === '') output = output;
-      else output = output + ' Million ';
+      if (output !== '') 
+        output = output + ' Million ';
     }
     if (segment === 1) {
-      if (output === '') output = output;
-      else output = output + ' Thousand ';
+      if (output !== '') 
+        output = output + ' Thousand ';
     }
     return output;
   }
 }
 
 console.log(numberToWords(01)); //-> One
-console.log(numberToWords(8)); //-> One
-console.log(numberToWords(101)); //-> One
+console.log(numberToWords(101)); //-> One Hundred One
 console.log(numberToWords(0)); //-> Zero
 console.log(numberToWords(10)); //-> Ten
 console.log(numberToWords(12)); //-> Twelve
-console.log(numberToWords(10069)); //-> Twelve
+console.log(numberToWords(10069)); //-> Ten Thousand Sixty Nine
+console.log(numberToWords(1000010)); //-> One Million Ten
 console.log(numberToWords(1300492)) //-> One Million Three Hundred Thousand Four Hundred Ninety Two
-console.log(numberToWords(9010009010)) //-> Nine Billion Ten Million Nine Thousand Eleven
+console.log(numberToWords(9010009011)) //-> Nine Billion Ten Million Nine Thousand Eleven
