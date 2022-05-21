@@ -60,8 +60,6 @@ function numberToWords(num) {
     // handle cases where we get leading zeros
     if (subStr[0] === '0' && subStr.length > 1) subStr = subStr.slice(1);
     if (subStr === '000') return '';
-    console.log(subStr)
-
 
     for (let i = subStr.length - 1; i >= 0; i--) {
       let digit = subStr[i];
