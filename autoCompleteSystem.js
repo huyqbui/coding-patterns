@@ -80,13 +80,13 @@ class AutoCompleteSystem {
     node.count = node.count + 1 || count;
   }
 
-  getLastPrefixNode(root, prefix) {
-    let node = root;
+  getLastPrefixNode(node, prefix) {
+    let currNode = node;
     for (const char of prefix) {
-      if (!node[char]) return [];
-      node = node[char];
+      if (!currNode[char]) return [];
+      currNode = currNode[char];
     }
-    return node;
+    return currNode;
   }
 
   findWords(node, prefix, output = {}) {
@@ -110,14 +110,14 @@ class AutoCompleteSystem {
   }
 
   input(char) {
+    // add the sentence to the system if char is '#'
     if (char === '#') {
       this.insert(this.prefix, 1);
       this.prefix = '';
       return [];
     }
 
-    // get last node of prefix, if DNE, no suggested results
-    // count: [sentences]
+    // get last node of prefix
     // starting from last char that matches prefix, find all valid sentences
     this.prefix += char; // add the newest input char to our input
 
@@ -130,7 +130,7 @@ class AutoCompleteSystem {
 
     const output = Object.entries(words)
       .sort((a, b) => b[0] - a[0]) // sort by highest count
-      .reduce((acc, [_,s]) => acc.concat(s), []) // remove the count from the array and keep only the sentence
+      .reduce((acc, [_, s]) => acc.concat(s), []) // remove the count from the array and keep only the sentence
       .slice(0, 3); // get only the first 3 elements
 
     return output;
@@ -141,5 +141,12 @@ const obj = new AutoCompleteSystem(["i love you", "island", "iroman", "i love le
 
 console.log(obj.input('i')) //-> [ 'i love you', 'island', 'i love leetcode' ]
 console.log(obj.input(' ')) //-> [ 'i love you', 'i love leetcode' ]
-console.log(obj.input('a')) //-> []
-console.log(obj.input('#')) //-> []
+console.log(obj.input('am')) //-> []
+console.log(obj.input(' ')) //-> []
+console.log(obj.input('hungry')) //-> []
+console.log(obj.input('#')) //-> []//-> ['i a']
+console.log(obj.input('i am dizzy')) //-> ['i am hungry']
+console.log(obj.input('#')) //-> ['i am hungry']
+console.log(obj.input('i am')) //-> ['i am dizzy', 'i am hungry']
+
+
