@@ -60,7 +60,8 @@ class LRUCache {
     this.cache.set(key, value);
     // if size of cache exceeds capacity, delete the 'oldest' aka first entry from cache
     if (this.cache.size > this.cap) {
-      this.cache.delete(this.cache.keys().next().value)
+      const oldestEntries = this.cache.keys()
+      this.cache.delete(oldestEntries.next().value)
     }
   }
 }
