@@ -14,20 +14,26 @@ Example 2:
   Output: [0,0,9,0,0]
 */
 
+// create a result array to store calculated prefix & postfix values
+// iterate through nums and calculate each prefix of a num and store in result
+// iterate backwards through nums and calculate each postfix of a num and update result
+
 // Time: O(N) where N is length of nums
 // Space: O(1) constant
 const productExceptSelf = (nums: number[]) => {
-  const result = [1];
+  const result = [];
 
-  for (let i = 1; i < nums.length; i++) {
-    result[i] = result[i - 1] * nums[i - 1]
+  let prefix = 1;
+  for (let i = 0; i < nums.length; i++) {
+    result[i] = prefix;
+    prefix = prefix * nums[i];
   }
 
-  let r = 1;
+  let postfix = 1;
   let i = nums.length - 1;
   while (i >= 0) {
-    result[i] = r * result[i];
-    r = r * nums[i];
+    result[i] = postfix * result[i];
+    postfix = postfix * nums[i];
     i--;
   }
   return result;
