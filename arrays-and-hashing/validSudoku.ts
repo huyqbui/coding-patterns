@@ -36,6 +36,9 @@ const isValidSudoku = (board: string[][]): boolean => {
       }
     }
   }
+  console.log(dict.rows)
+  console.log(dict.cols)
+  console.log(dict.squares)
   return true;
 };
 
