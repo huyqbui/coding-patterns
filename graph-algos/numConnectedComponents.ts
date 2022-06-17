@@ -42,10 +42,13 @@ const numConnectedComponents = (num: number, edges: number[][]) => {
 
   const visited = new Set();
   let componentCount = 0;
+  let allNodesFound = false;
 
   for (const node in adjacencyList) {
     if (travel(node) === true) componentCount++;
   }
+
+
 
   function travel(node: string) {
     if (visited.has(String(node))) return;
@@ -59,6 +62,8 @@ const numConnectedComponents = (num: number, edges: number[][]) => {
 }
 
 const edges = [[0, 1], [1, 2], [3, 4]];
-
-console.log(numConnectedComponents(5, edges));
-
+const edges2 = [[2,3],[1,2],[1,3]]
+const edges3 = [ [0, 1], [1, 2], [2, 3], [3, 4] ]
+console.log(numConnectedComponents(5, edges)); //-> 2
+console.log(numConnectedComponents(4, edges2)); //-> 2
+console.log(numConnectedComponents(4, edges3)); //-> 1
