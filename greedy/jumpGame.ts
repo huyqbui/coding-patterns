@@ -36,6 +36,15 @@ const jumpGame = (nums: number[]) => {
   return false;
 }
 
+/*
+
+idx = 3;
+max = 3;
+target = 4;
+
+                               i
+
+*/
 console.log(jumpGame([2, 3, 1, 1, 4])) //-> true
 console.log(jumpGame([3, 2, 1, 0, 4])) //-> false
 console.log(jumpGame([0])) //-> true

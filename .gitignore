@@ -1,3 +1,4 @@
+.gitignore
 /patternsString.js
 /minHeap.js
 /node_modules
@@ -9,3 +10,4 @@
 /debounce.js
 /subsets/evalExpressionAll.ts
 /LRUCache2.js
+/graph-algos/rotate-matrix.js

@@ -15,11 +15,23 @@ Example 1:
   output: '01:30' as in 1hr 30min between 12:30PM - 02:00PM
 */
 
+const { start } = require("repl");
+
 const mostFreeTime = (times) => {
   const formattedTimes = []
 
   // convert each start and end time to a Date format and push to formattedTimes array
   for (const time of times) {
+    const startAndEndDay = formatTimes(time);
+    formattedTimes.push(startAndEndDay)
+  }
+
+  // sort formattedTimes by starting time
+  formattedTimes.sort((a, b) => a[0] - b[0]);
+
+  return calculateFreeTime(formattedTimes) 
+
+  function formatTimes(time) {
     const event = time.split('-');
     const timeStart = event[0].slice(0,5); // '10:00'
     const startAM_PM = event[0].slice(5); // 'AM'
@@ -33,13 +45,8 @@ const mostFreeTime = (times) => {
     const startDay = new Date(`Jan 1, 2022 ${start}`);
     const endDay = new Date(`Jan 1, 2022 ${end}`);
 
-    formattedTimes.push([startDay, endDay])
+    return [startDay, endDay]
   }
-
-  // sort formattedTimes by starting time
-  formattedTimes.sort((a, b) => a[0] - b[0]);
-
-  return calculateFreeTime(formattedTimes) 
 
   function calculateFreeTime(times) {
     // declare variable to keep track of greatest max free time;

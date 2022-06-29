@@ -37,6 +37,5 @@ const minimumDeletions = (s: string): number => {
 }
 
 
-
 console.log(minimumDeletions('aababbab')) // -> 2
 console.log(minimumDeletions(' BBAAAAAABBBBBBBBAA')) // -> 2
