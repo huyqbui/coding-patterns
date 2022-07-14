@@ -6,13 +6,13 @@
 
 // Time: O(m * n)
 // Space: O(m * n)
-const pacificAtlantic = (heights) => {
+const pacificAtlantic = (heights: number[][]) => {
   // use a set that will contain a collection of positions that can reach each ocean
   // iterate through the first row, and dfs travel to add these pos to the corresponding set
   // iterate through the first col and dfs travel to add these pos to the corresponding set
   // iterate through each pos, and if it's pos is in both sets, push its pos to our output array
   const ROWS = heights.length, COLS = heights[0].length, LASTROW = ROWS - 1, LASTCOL = COLS - 1;
-  const pacific = new Set(), atlantic = new Set();
+  const pacific: Set<string> = new Set(), atlantic: Set<string> = new Set();
   const directions = [ [1, 0], [-1, 0], [0, 1], [0, -1] ]
   const result = [];
   
@@ -36,7 +36,7 @@ const pacificAtlantic = (heights) => {
   
   return result;
   
-  function travel(r, c, visitedSet, prevHeight) {
+  function travel(r: number, c: number, visitedSet: Set<string>, prevHeight: number) {
       const outOfBounds = r < 0 || r >= ROWS || c < 0 || c >= COLS;
       const pos = `${r},${c}`
       const inVisited = visitedSet.has(pos);
@@ -68,3 +68,8 @@ console.log(pacificAtlantic(heights));
 //-> [ [ 0, 4 ], [ 1, 3 ], [ 1, 4 ], [ 2, 2 ], [ 3, 0 ], [ 3, 1 ], [ 4, 0 ] ]
 console.log(pacificAtlantic(heights2));
 //-> [ [0, 0], [0, 1], [1, 0], [1, 1] ]
+
+
+const huyObj = {
+  likes: 'Aimee'
+}
