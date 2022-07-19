@@ -9,6 +9,7 @@ function timeAgo(dateParam) {
   const minutes = Math.floor(seconds/60)
   const hours = Math.floor(minutes/60)
   const days = Math.floor(hours/24)
+  const years = Math.floor(days/365)
   const isToday = today.toDateString() === date.toDateString();
   const isYesterday = yesterday.toDateString() === date.toDateString()
   const isThisYear = today.getFullYear() === date.getFullYear();
@@ -20,6 +21,8 @@ function timeAgo(dateParam) {
   else if (hours < 24) return `${ hours } hours ago`
   else if (days < 365) {
     return (days ===1) ? `1 day ago`  : `${ days } days ago`}
+  else
+    return `${years} year ago`
 }
 
-console.log(timeAgo(new Date('March 25, 2022 12:10:00')))
+console.log(timeAgo(new Date('July 18, 2020 9:50:00')))
