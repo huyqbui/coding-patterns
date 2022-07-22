@@ -46,26 +46,27 @@ Example 1:
   rounds = [ [1, 2, 10], [2, 4, 5], [3, 5, 12] ]
   output = 17
 */
-
+// Time: O(n)
+// Space: O(n)
 const maxValue = (n: number, rounds: number[][]) => {
-  // create an array to represent our investments the size of n and fill with 0's
-  // keep track of maxInvestment
   const arr = Array(n).fill(0)
   let maxInvestment = 0;
 
-  // iterate through each subarray in rounds, get the leftIndex, rightIndex, and funds
-  // do another iteration for each element in between leftIndex to rightIndex, and add funds to it's curr value
-  // update maxInvestment to be the highest value
   for (const round of rounds) {
-    const [left, right, funds] = round;
-    let i = left;
-    while (i <= right) {
-      arr[i - 1] += funds;
-      maxInvestment = Math.max(maxInvestment, arr[i - 1])
-      i++;
+    const [start, end, funds] = round;
+    arr[start] += funds;
+
+    if (end < rounds.length) {
+      arr[end + 1] -= funds;
     }
   }
 
+  let curr = 0;
+
+  arr.forEach(val => {
+    curr += val;
+    maxInvestment = Math.max(maxInvestment, curr)
+  })
   return maxInvestment;
 }
 
